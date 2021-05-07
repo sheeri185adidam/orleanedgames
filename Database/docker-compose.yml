@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment: 
+      - POSTGRES_PASSWORD=1234
+    ports: 
+      - "5432:5432"
+    volumes: 
+      - orleans-persistence:/var/lib/postgresql
+      - ./postgres:/docker-entrypoint-initdb.d
+
+volumes: 
+  orleans-persistence:
+    external: true
